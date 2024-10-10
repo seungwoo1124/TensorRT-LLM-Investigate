@@ -1,5 +1,8 @@
 <div align="center">
 
+# TensorRT-LLM Repository 를 Fork 한 개인 공부용 Repository 입니다.
+- 원본 [Repository Link](https://github.com/NVIDIA/TensorRT-LLM)
+
 TensorRT-LLM
 ===========================
 <h4> A TensorRT Toolbox for Optimized Large Language Model Inference</h4>

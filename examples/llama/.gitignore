@@ -3,3 +3,6 @@ tokenizer.model
 *output*
 *.safetensors
 *.json
+*ckpt*
+*hf_models*
+

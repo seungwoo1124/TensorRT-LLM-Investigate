@@ -9,16 +9,6 @@ DTYPE=${5:-"float16"}
 TP_SIZE=${6:-1}
 WORKERS=${7:-8}
 
-echo $hf_model_repo
-echo $model_dir
-echo $checkpoint_dir
-echo $engine_dir
-
-echo $DTYPE
-echo $TP_SIZE
-echo $WORKERS
-exit 0
-
 if [[ $# -ne 4 ]] then
 	echo "usage: $0 hf_model_repo model_dir checkpoint_dir engine_dir"
 	exit 1

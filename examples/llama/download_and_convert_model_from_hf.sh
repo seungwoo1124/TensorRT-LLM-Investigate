@@ -30,7 +30,7 @@ else
 	exit 1
 fi
 
-if (trtllm-build --checkpoint_dir $checkpoint_dir --output_dir $engine_dir --gemm_plugin auto --context_fmha disable --max_batch_size 1 --max_input_len 512 --max_output_len 128 --max_beam_width 1) then
+if (trtllm-build --checkpoint_dir $checkpoint_dir --output_dir $engine_dir --gemm_plugin auto --context_fmha disable --max_batch_size 1 --max_input_len 512 --max_seq_len 670 --max_beam_width 1) then
 	echo "trtllm-build complete. engine Path : $engine_dir"
 else
 	echo "trtllm-build Fail"

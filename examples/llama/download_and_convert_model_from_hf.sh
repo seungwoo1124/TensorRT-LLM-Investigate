@@ -19,13 +19,15 @@ if (python ./download_model.py --model_dir=$hf_model_repo --output_dir=$model_di
 else
 	echo "Model download Fail."
 	rm -rf $model_dir
+	exit 1
 fi
 
-if (python ./convert_checkpoint.py --model_dir=$model_dir --output_dir=$checkpoint_dir --dtype=DTYPE --tp_size=TP_SIZE --workers=WORKERS) then
+if (python ./convert_checkpoint.py --model_dir=$model_dir --output_dir=$checkpoint_dir --dtype=$DTYPE --tp_size=$TP_SIZE --workers=$WORKERS) then
 	echo "Convert checkpoint Complete. ckpt Path : $checkpoint_dir"
 else
 	echo "Convert Model Fail"
 	rm -rf $model_dir $checkpoint_dir
+	exit 1
 fi
 
 if (trtllm-build --checkpoint_dir $checkpoint_dir --output_dir $engine_dir --gemm-plugin auto --context_fmha disable --max_batch_size 1 --max_input_len 512 --max_output_len 128 --max_beam_width 1) then
@@ -33,4 +35,5 @@ if (trtllm-build --checkpoint_dir $checkpoint_dir --output_dir $engine_dir --gem
 else
 	echo "trtllm-build Fail"
 	rm -rf $model_dir $checkpoint_dir $engine_dir
+	exit 1
 fi
